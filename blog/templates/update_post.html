@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Edit a blog post{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h2> Edit blog post </h2>
+        <br/><br/>
+        <div class="form-group">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button class="btn btn-secondary">Update</button>
+        </form>
+        </div>
+    {% else %}
+<!--        i need here error 404 pageeee-->
+        You can't delete post if you not correct user.
+    {% endif %}
+{% else %}
+You can't delete post if you not correct user.
+{% endif %}
+
+
+{% endblock %}

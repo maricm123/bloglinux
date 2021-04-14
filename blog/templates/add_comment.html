@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Create a comment{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+<h2> Add comment </h2>
+<br/><br/>
+<div class="form-group">
+    <form method="POST"">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-secondary">Add comment</button>
+</form>
+{% endif %}
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("elder").value = name;
+
+</script>
+</div>
+
+
+
+{% endblock %}
